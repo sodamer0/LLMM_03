@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pelicula>
+
+  <titulo>Brazil</titulo>
+  <director>Terry Gilliam</director>
+  <año>1985</año>
+
+  <actores>
+    <actor>Jonathan Pryce</actor>
+  </actores>
+
+  <premios>
+    <Ganador>
+      <Bafta>Mejores Efectos Especiales</Bafta>
+    </Ganador>
+    <Nominado>
+      <Oscar>Mejor Guión Original</Oscar>
+  </Nominado>
+  </premios>
+</pelicula>
