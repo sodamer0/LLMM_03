@@ -1,26 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!DOCTYPE futbol SYSTEM "DTD.DTD">
-<!--El !DOCTYPE no es código XML es el DTD-->
-
-<!--<!DOCTYPE futbol [
-  <!ELEMENT futbol ((jugador|equipo)*)>
-  <!ELEMENT jugador EMPTY>
-  <!ATTLIST jugador nombre NMTOKENS #REQUIRED>
-  <!ATTLIST jugador codigo ID #REQUIRED>
-  <!ELEMENT equipo EMPTY>
-  <!ATTLIST equipo nombre CDATA #REQUIRED>
-  <!ATTLIST equipo jugadores IDREFS #IMPLIED>
-]>-->
+<!DOCTYPE futbol SYSTEM "SintesMarco_DTD_ejer_6_3.dtd">
 
 <futbol>
+<!-- Esto es una anotación     -->
+
   <jugador nombre="Alfredo Di Stéfano" codigo="ads"/>
   <jugador nombre="Edison Arantes do Nascimento" codigo="ean" />
   <jugador nombre="Diego Armando Maradona" codigo="dam" ></jugador>
-  <jugador nombre="Cristiano Ronaldo" codigo="jc"></jugador>
-  <jugador nombre="Iago Aspas" codigo="jam"></jugador>
-  <jugador nombre="Johan Cruyff" codigo="dat" />
-  <equipo nombre="R.C. Celta" jugadores="jam"></equipo>
-  <equipo nombre="Società Sportiva Calcio Napoli" jugadores="d" />
+  <jugador nombre="Johan Cruyff" codigo="jc" />
+    <jugador nombre="adolfo sssss" codigo="dat" />
+  <equipo nombre="Società Sportiva Calcio Napoli" jugadores="dam" />
   <equipo nombre="Futbol Club Barcelona" jugadores="jc dat" />
+
 </futbol>
