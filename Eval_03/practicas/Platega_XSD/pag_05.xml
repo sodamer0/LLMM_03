@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE garderia SYSTEM "pag_03_garderia.dtd"> -->	  
+<garderia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	       xsi:noNamespaceSchemaLocation="pag_04_garderia.xsd">
+  <neno numeroExpedente="2345">
+    <nome>Armando Guerra Sucia</nome>
+    <dataNacemento>2005-10-12</dataNacemento>
+    <peso>15.8</peso>
+    <altura>76</altura>
+    <vacunas>true</vacunas>
+  </neno>
+</garderia>

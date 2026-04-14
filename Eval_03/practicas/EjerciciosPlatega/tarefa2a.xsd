@@ -1,0 +1,15 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="Ciclo">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Familia" minOccurs="1" maxOccurs="12" type="tipoFamilia"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="tipoFamilia">
+		<xs:sequence>
+				<xs:element name="Nombre" type="xs:string"/>
+				<xs:element name="Modulo" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
