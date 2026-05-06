@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<biblioteca xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:noNamespaceSchemaLocation="biblioteca.xsd">
+
+  <libros>
+    <libro isbn="978-84-01" titulo="Cien años de soledad" autor="García Márquez"/>
+    <libro isbn="978-84-02" titulo="El nombre de la rosa"  autor="Umberto Eco"/>
+    <libro isbn="978-84-03" titulo="1984"                  autor="George Orwell"/>
+  </libros>
+
+  <prestamos>
+    <prestamo id="P01" isbn_libro="978-84-01" socio="María López"/>
+    <prestamo id="P02" isbn_libro="978-84-03" socio="Carlos Ruiz"/>
+    <!-- Si pusieramos isbn_libro="978-00-99" → ERROR de validación -->
+  </prestamos>
+
+</biblioteca>

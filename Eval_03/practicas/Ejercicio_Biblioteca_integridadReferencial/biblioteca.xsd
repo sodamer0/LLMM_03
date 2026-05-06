@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!-- ═══ Elemento raíz ═══ -->
+  <xs:element name="biblioteca">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="libros">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="libro" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="isbn"   type="xs:string"  use="required"/>
+                  <xs:attribute name="titulo" type="xs:string"  use="required"/>
+                  <xs:attribute name="autor"  type="xs:string"  use="required"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <xs:element name="prestamos">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="prestamo" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="id"         type="xs:string"  use="required"/>
+                  <xs:attribute name="isbn_libro"  type="xs:string"  use="required"/>
+                  <xs:attribute name="socio"       type="xs:string"  use="required"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!--  INTEGRIDAD REFERENCIAL: se declara aquí, en la    -->
+    <!--  raíz, para tener visibilidad sobre todo el árbol  -->
+    <!-- ═══════════════════════════════════════════════════ -->
+
+    <!-- 1. CLAVE PRIMARIA: isbn debe ser único y obligatorio en cada <libro> -->
+    <xs:key name="claveISBN">
+      <xs:selector xpath="libros/libro"/>   <!-- ámbito: todos los <libro> -->
+      <xs:field    xpath="@isbn"/>          <!-- campo clave: el atributo isbn -->
+    </xs:key>
+
+    <!-- 2. CLAVE FORÁNEA: isbn_libro en <prestamo> debe existir como isbn en <libro> -->
+    <xs:keyref name="refISBN" refer="claveISBN">
+      <xs:selector xpath="prestamos/prestamo"/>  <!-- ámbito: todos los <prestamo> -->
+      <xs:field    xpath="@isbn_libro"/>         <!-- campo que referencia -->
+    </xs:keyref>
+
+    <!-- 3. UNICIDAD SIMPLE: el id de préstamo no se repite (pero podría estar ausente) -->
+    <xs:unique name="unicidadIdPrestamo">
+      <xs:selector xpath="prestamos/prestamo"/>
+      <xs:field    xpath="@id"/>
+    </xs:unique>
+
+  </xs:element>
+
+</xs:schema>
