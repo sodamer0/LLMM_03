@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cine>
+  <ficha>
+    <codigo>1</codigo>
+    <detalles estreno="1997">El santo</detalles>
+    <finanzas divisa="dólar">13.56</finanzas>
+  </ficha>
+  <ficha>
+    <codigo>3</codigo>
+    <detalles estreno="1995">Leaving Las Vegas</detalles>
+    <finanzas divisa="euro">22.18</finanzas>
+  </ficha>
+  <ficha>
+    <codigo>4</codigo>
+    <detalles estreno="1993">¿A quién ama Gilbert Grape?</detalles>
+    <finanzas divisa="dólar">11.52</finanzas>
+  </ficha>
+</cine>

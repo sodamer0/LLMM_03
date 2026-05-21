@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="BIBLIOTECA">
+  
+    <xs:complexType>
+    
+      <xs:sequence>
+      
+        <xs:element name="LIBRO" maxOccurs="unbounded"/>
+        
+          <xs:complexType>
+          
+              <xs:sequence>
+              
+                  <xs:element name="TITULO" type=""xs:string"/>
+                  
+                  <xs:element name="AUTOR" type=""xs:string"/>
+                  
+                    <xs:complexType>
+                    
+                      <xs:sequence>
+                      
+                      
+                      
+                      </xs:sequence>
+                    
+                    
+                    </xs:complexType>
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  <xs:element name="FECHAPUBLICACION" type="xs:date"/>
+                  
+                  
+              
+              
+              
+              </xs:sequence>
+          
+          
+          
+          
+          
+          </xs:complexType>
+        
+      </xs:sequence>
+      
+    </xs:complexType>
+    
+  </xs:element>
+
+
+</xs:schema>
+

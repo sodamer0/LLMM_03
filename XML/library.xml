@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<biblioteca>
+  <nombre>Biblioteca Central IES</nombre>
+  <secciones>
+    <seccion id="N">
+      <materia>Narrativa</materia>
+      <edadRecomendada>Juvenil</edadRecomendada>
+    </seccion>
+    <seccion id="T">
+      <materia>Teatro</materia>
+      <edadRecomendada>Adultos</edadRecomendada>
+    </seccion>
+    <seccion id="C">
+      <materia>Ciencia y Tecnología</materia>
+      <edadRecomendada>Todos los públicos</edadRecomendada>
+    </seccion>
+  </secciones>
+  <libros>
+    <libro isbn="978-11">
+      <titulo>El juego de Ender</titulo>
+      <ejemplares>4</ejemplares>
+      <paginas>350</paginas>
+      <seccionRef>N</seccionRef>
+    </libro>
+    <libro isbn="978-22">
+      <titulo>Don Álvaro o la fuerza del sino</titulo>
+      <ejemplares>2</ejemplares>
+      <paginas>180</paginas>
+      <seccionRef>T</seccionRef>
+    </libro>
+    <libro isbn="978-33">
+      <titulo>Introducción a XML y Bases de Datos</titulo>
+      <ejemplares>5</ejemplares>
+      <paginas>420</paginas>
+      <seccionRef>C</seccionRef>
+    </libro>
+    <libro isbn="978-44">
+      <titulo>Crónicas Marcianas</titulo>
+      <ejemplares>1</ejemplares>
+      <paginas>290</paginas>
+      <seccionRef>N</seccionRef>
+      <seccionRef>C</seccionRef>
+    </libro>
+  </libros>
+</biblioteca>

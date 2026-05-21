@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<maquinas>
+  <maquina>
+    <nombre>PC017</nombre>
+    <procesador marca="Intel" modelo="i7"/>
+    <memoria medida="GB" tecnologia="DDR3">8</memoria>
+    <discos cantidad="1" capacidad="2000"/>
+  </maquina>
+  <maquina>
+    <nombre>GALILEO</nombre>
+    <procesador marca="Intel" modelo="Xeon"/>
+    <memoria medida="GB" tecnologia="DDR2">2</memoria>
+    <discos cantidad="3" capacidad="600"/>
+  </maquina>
+</maquinas>

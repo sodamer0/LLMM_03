@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gimnasio nombre="AltaFit Vigo" código="GIM-2026">
+
+  <!-- Catálogo de Socios -->
+  <socio id="101">
+    <nome>Carlos Pérez</nome>
+    <teléfono>600123456</teléfono>
+    <desconto tipo="estudante">15.50</desconto>
+    <email>carlos@email.com</email>
+  </socio>
+
+  <socio id="102">
+    <nome>Ana Martínez</nome>
+    <teléfono>655987654</teléfono>
+    <desconto tipo="familiar">10.00</desconto>
+    <!-- El email es opcional, Ana no tiene -->
+  </socio>
+
+  <socio id="103">
+    <nome>Luis Ferreiro</nome>
+    <teléfono>611223344</teléfono>
+    <!-- El descuento es opcional, Luis paga tarifa completa (no tiene descuento) -->
+    <email>luis@email.com</email>
+  </socio>
+
+  <!-- Lista de Clases Dirigidas -->
+  <clase id_clase="C-01">
+    <actividade>Pilates</actividade>
+    <profesor>Marta Gómez</profesor>
+    <duración>45</duración>
+    <!-- Asistentes que van a la clase apuntados por su ID de socio -->
+    <asiste id_socio="101"/>
+    <asiste id_socio="102"/>
+  </clase>
+
+  <clase id_clase="C-02">
+    <actividade>Spinning</actividade>
+    <profesor>Roberto Vaquero</profesor>
+    <duración>50</duración>
+    <asiste id_socio="102"/>
+    <asiste id_socio="103"/>
+  </clase>
+
+</gimnasio>

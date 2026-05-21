@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<almacen>
+  <articulo codigo="ART-099">
+    <datos>
+      <categoria>Almacenamiento</categoria>
+      <marca>Kingston</marca>
+      <componente tipo="SSD NVMe" velocidad_lectura="3500">A400</componente>
+      <capacidad un="GB">500</capacidad>
+      <precio unidad="EUR">45</precio>
+    </datos>
+    <logistica>
+      <pasillo>A</pasillo>
+      <estanterias_ocupadas>1</estanterias_ocupadas>
+    </logistica>
+  </articulo>
+  <articulo codigo="SERVER-RAM">
+    <datos>
+      <categoria>Memoria</categoria>
+      <marca>Corsair</marca>
+      <componente tipo="RAM DDR4" velocidad_lectura="3200">Vengeance</componente>
+      <capacidad un="GB">16</capacidad>
+      <precio unidad="EUR">75</precio>
+    </datos>
+    <logistica>
+      <pasillo>B</pasillo>
+      <estanterias_ocupadas>2</estanterias_ocupadas>
+      <estanterias_ocupadas>2</estanterias_ocupadas>
+      <estanterias_ocupadas>2</estanterias_ocupadas>
+    </logistica>
+  </articulo>
+</almacen>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<concesionario localidade="Vigo" código_tienda="CON-9876">
+
+  <!-- Stock de Vehículos -->
+  <vehículo matrícula="1234-BBB">
+    <marca>Toyota</marca>
+    <modelo>Yaris</modelo>
+    <prezo moeda="euro">18500.00</prezo>
+    <extras>
+      <extra tipo="seguridade">Sensores de aparcamento</extra>
+      <extra tipo="confort">Asentos calefactables</extra>
+    </extras>
+  </vehículo>
+
+  <vehículo matrícula="5678-CXC">
+    <marca>Ford</marca>
+    <modelo>Focus</modelo>
+    <prezo moeda="euro">24200.50</prezo>
+    <!-- Los extras son opcionales, este coche no tiene la etiqueta <extras> -->
+  </vehículo>
+
+  <!-- Registro de Ventas -->
+  <venda id_venda="V-001">
+    <vendedor>Mariña Rego</vendedor>
+    <data>2026-05-15</data>
+    <!-- Vinculamos la venta con la matrícula del coche vendido -->
+    <coche_vendido ref_matrícula="1234-BBB"/>
+  </venda>
+
+  <venda id_venda="V-022">
+    <vendedor>Pedro Sampaio</vendedor>
+    <data>2026-05-18</data>
+    <coche_vendido ref_matrícula="5678-CXC"/>
+  </venda>
+
+</concesionario>

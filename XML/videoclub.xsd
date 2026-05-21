@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="videoclub" type="tipoVideoclub">
+
+    <xs:key name="idPeli">
+      <xs:selector xpath="./pelicula"/> 
+      <xs:field xpath="@id"/>
+    </xs:key>
+    
+    <xs:key name="idCritica">
+      <xs:selector xpath="./critica"/> 
+      <xs:field xpath="@id"/>
+    </xs:key>
+    
+    <xs:keyref name="referenciaPeliEnCritica" refer="idPeli">
+      <xs:selector xpath="./critica/puntuacion"/>
+      <xs:field xpath="@peli_ref"/>
+    </xs:keyref>
+    
+  </xs:element>
+  
+  
+  <xs:element name="pelicula" type="tipoPelicula"/>
+
+  
+  <xs:element name="critica" type="tipoCritica"/>
+
+  
+  <xs:element name="puntuacion" type="tipoPuntuacion"/>
+
+
+<xs:attributeGroup name="grupoId">
+  <xs:attribute name="id" type="formatoID" use="required"/>
+  <xs:attribute name="idioma" type="xs:string" use="optional"/>
+</xs:attributeGroup>
+  
+  
+  <xs:simpleType name="tipoGenero">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Terror"/>
+      <xs:enumeration value="Comedia"/>
+      <xs:enumeration value="Drama"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="formatoID">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Z][a-z]{2}-[0-9]{3}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="formatoPuntuacion">
+    <xs:restriction base="xs:decimal">
+      <xs:fractionDigits value="3"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:complexType name="tipoVideoclub">
+      <xs:sequence>
+        <xs:element ref="pelicula" minOccurs="1" maxOccurs="unbounded"/>
+        <xs:element ref="critica" maxOccurs="100"/>
+      </xs:sequence>
+      <xs:attribute name="empresa" type="xs:string" use="required"/>
+  </xs:complexType>
+  
+  <xs:complexType name="tipoPelicula">
+    <xs:sequence>
+      <xs:element name="titulo" type="xs:string"/>
+      <xs:element name="generos" type="tipoGenero"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="grupoId"/>
+  </xs:complexType>
+  
+  <xs:complexType name="tipoCritica">
+    <xs:sequence>
+      <xs:element name="contenido" type="xs:string"/>
+      <xs:element ref="puntuacion"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="grupoId"/>
+  </xs:complexType>
+  
+    <xs:complexType name="tipoPuntuacion">
+      <xs:simpleContent>
+        <xs:extension base="formatoPuntuacion">
+          <xs:attribute name="autor"  type="xs:string" use="required"/>
+          <xs:attribute name="peli_ref" type="formatoID" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+
+  
+</xs:schema>

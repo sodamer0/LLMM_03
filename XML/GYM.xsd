@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="gimnasio">
+  
+  <!-- 01. ELEMENTO "GIMNASIO"-RAIZ (CONTIENE LAS CLAVES Y REGLAS DEL DOCUMENTO) -->
+    <xs:complexType>
+          <xs:sequence>
+        <xs:element ref="socio" maxOccurs="unbounded"/>
+        <xs:element ref="clase" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="nombre" type="xs:string" use="required"/>
+      <xs:attribute name="código" type="tipoCodGym" use="required"/>
+    </xs:complexType>
+    
+    <!-- ***************CLAVES Y REGLAS********************* -->
+    
+    <xs:key name="idSocio">
+      <xs:selector xpath="socio"/>
+      <xs:field xpath="@id"/>
+    </xs:key>
+    
+    <xs:key name="idClase">
+      <xs:selector xpath="clase"/>
+      <xs:field xpath="@id_clase"/>
+    </xs:key>
+    
+    <xs:keyref name="referenciaSocio" refer="idSocio">
+      <xs:selector xpath=".//asiste"/>
+      <xs:field xpath="@id_socio"/>
+    </xs:keyref>
+    
+  </xs:element>
+  
+<!-- **********************ELEMENTOS********************* -->
+  
+   <!-- 02. ELEMENTO "SOCIO"  -->
+  <xs:element name="socio">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="nome" type="xs:string"/>
+        <xs:element name="teléfono" type="xs:string"/>
+        <xs:element ref="desconto" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="email" type="xs:string" minOccurs="0" maxOccurs="1"/>       
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:integer" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  
+     <!-- 02. ELEMENTO "CLASE"  -->
+  <xs:element name="clase">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="actividade" type="xs:string"/>
+        <xs:element name="profesor" type="xs:string"/>
+        <xs:element name="duración" type="xs:integer"/>
+        <xs:element ref="asiste" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="id_clase" type="tipoIdClase" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  
+     <!-- 03. COMPONENTE "ASISTE"  -->
+  <xs:element name="asiste" >
+    <xs:complexType>
+      <xs:attribute name="id_socio" type="xs:integer" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  
+     <!-- 04. ELEMENTO "DESCONTO"  -->
+  <xs:element name="desconto">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="tipoDesconto">
+          <xs:attribute name="tipo" type="xs:string" use="required"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  
+  <!-- **********************PLANTILLAS********************* -->
+  
+         <!-- 05. PLANTILLA DE TIPO DE DATO PERSONALIZADA(OPCIONAL) -->
+  <xs:simpleType name="tipoIdClase">
+    <xs:restriction base="xs:string">
+      <!-- El patrón obliga a: una 'C', un guión, y exactamente dos números del 0 al 9 -->
+      <xs:pattern value="C-[0-9]{2}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+   <!-- 06. PLANTILLA DE TIPO DE DATO PERSONALIZADA(DECIMAL REDONDEADO) -->
+  <xs:simpleType name="tipoDesconto">
+    <xs:restriction base="xs:decimal">
+      <xs:fractionDigits value="2"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="tipoCodGym">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="GIM-[0-9]{4}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+</xs:schema>

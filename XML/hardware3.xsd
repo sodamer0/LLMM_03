@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+  <xs:element name="equipos">
+  
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="máquina" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+    
+
+    <xs:key name="claveMaquina">
+      <xs:selector xpath="maquina"/>  <!-- Buscamos en cada máquina -->
+      <xs:field xpath="@nome"/>       <!-- Vigilamos su ATRIBUTO nome usando @ -->
+    </xs:key>
+
+    <xs:unique name="IPUnica">
+      <xs:selector xpath="maquina/config"/>
+      <xs:field xpath="IP"/>
+    </xs:unique>
+
+
+  </xs:element>
+  
+  
+  <xs:element name="máquina">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="hardware" maxOccurs="unbounded"/>
+        <xs:element ref="config" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="nome" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  
+  
+  <xs:element name="hardware">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="tipo" type="xs:string"/>
+        <xs:element name="fabricante" type="xs:string"/>
+        <xs:element ref="procesador"/>
+        <xs:element ref="memoria"/>
+        <xs:element ref="disco" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:choice>
+          <xs:element ref="gravadora"/>
+          <xs:element ref="lectora"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="nome" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  
+  
+  <xs:element name="config">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="role" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="0S" type="xs:string"/>
+        <xs:element name="IP" type="xs:string"/>
+        <xs:element name="gateway" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="procesador">
+    <xs:complexType>
+      <xs:simpleContent>
+      <xs:extension base="xs:string">
+      <xs:attribute name="marca" type="xs:string" use="required"/>
+      <xs:attribute name="num_nucleos" type="xs:integer" use="required"/>
+      <xs:attribute name="velocidade" type="xs:decimal" use="required"/>
+      </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="memoria">
+    <xs:complexType>
+      <xs:simpleContent>
+      <xs:extension base="xs:string">
+      <xs:attribute name="tecnoloxía" type="xs:string"/>
+      </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="disco">
+    <xs:complexType>
+      <xs:attribute name="tecnoloxía" type="xs:string"/>
+      <xs:attribute name="capacidade" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>  
+  
+  <xs:element name="gravadora">
+    <xs:complexType>
+      <xs:attribute name="tipo" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>  
+  
+  <xs:element name="lectora">
+    <xs:complexType>
+      <xs:attribute name="tipo" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>  
+  
+</xs:schema>

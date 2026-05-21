@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<tienda>
+  <producto referencia="PROD-95">
+    <consola marca="Sony">PlayStation 5</consola>
+    <precio>499</precio>
+  </producto>
+</tienda>
+

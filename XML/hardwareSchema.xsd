@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  
+  
+  <!-- 1. DECLARACIÓN DEL ELEMENTO RAIZ -->
+  
+  <xs:element name="equipos">
+  
+  
+    <xs:complexType>
+      <xs:sequence>
+      <!-- Referenciamos al elemento hijo -->
+        <xs:element ref="máquina" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+    
+        <!-- REGLA 1: El atributo 'nome' de la máquina actúa como CLAVE PRIMARIA -->
+    <xs:key name="claveMaquina">
+      <xs:selector xpath="maquina"/>  <!-- Buscamos en cada máquina -->
+      <xs:field xpath="@nome"/>       <!-- Vigilamos su ATRIBUTO nome usando @ -->
+    </xs:key>
+
+    <!-- REGLA 2: La IP también debe ser única (la que ya teníamos) -->
+    <xs:unique name="IPUnica">
+      <xs:selector xpath="maquina/config"/>
+      <xs:field xpath="IP"/>          <!-- Aquí no lleva @ porque IP es una etiqueta, no un atributo -->
+    </xs:unique>
+    
+    
+  </xs:element>
+  
+    <!-- 2. DECLARACIÓN DE LOS ELEMENTOS HIJO -->
+  
+  <xs:element name="máquina">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="hardware" />
+        <xs:element ref="config" />
+      </xs:sequence>
+      <xs:attribute name="nome" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="hardware">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="tipo" type="xs:string"/>
+        <xs:element name="fabricante" type="xs:string"/>
+        <xs:element ref="procesador"/>
+        <xs:element ref="memoria"/>
+        <xs:element ref="disco" maxOccurs="unbounded"/>
+        <xs:choice>
+          <xs:element ref="gravadora"/>
+          <xs:element ref="lectora"/>
+        </xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="config">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="role" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="OS" type="xs:string" />
+        <xs:element name="IP" type="xs:string"/>
+        <xs:element name="gateway" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="procesador">
+    <xs:complexType>
+      <!-- Indicamos que el contenido del elemento es texto (string) -->
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="marca" type="xs:string" use="required"/>
+          <xs:attribute name="num_nucleos" type="xs:integer" use="required"/>
+          <xs:attribute name="velocidade" type="xs:string" use="required"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="memoria">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="tecnoloxía" type="tipoTecnoloxia" use="required"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="disco">
+    <xs:complexType>
+      <xs:attribute name="tecnoloxía" type="tipoTecnoloxia" use="required"/>
+      <xs:attribute name="capacidade" type="tipoCapacidade" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="gravadora">
+    <xs:complexType>
+      <xs:attribute name="tipo" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  
+    <xs:element name="lectora">
+    <xs:complexType>
+      <xs:attribute name="tipo" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  
+  <!-- Creamos una plantilla de tipo de datos personalizada -->
+<xs:simpleType name="tipoTecnoloxia">
+  <xs:restriction base="xs:string">
+  </xs:restriction>
+</xs:simpleType>
+
+  
+  <!-- Creamos una plantilla para validar la capacidad del disco -->
+  <xs:simpleType name="tipoCapacidade">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="1"/>     <!-- No permite valores menores a 1 -->
+      <xs:maxInclusive value="10000"/> <!-- No permite valores mayores a 10000 -->
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <!--
+   Tb se podría crear un "ATRIBUTO COMPLETO", sería como un atributo "GLOBAL" 
+    <xs:attribute name="tecnoloxía" type="xs:string"/> Se llamaría desde cualquier elemento con un  "REF"
+    
+    <xs:attribute ref="tecnoloxía" use="required"/>
+  -->
+
+</xs:schema>

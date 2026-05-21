@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="videoteca">
+  
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="película" maxOccurs="unbounded"/>
+        <xs:element ref="actor" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="data_creación" type="xs:string" use="required"/>
+    </xs:complexType>
+    
+    <!-- CLAVE PRIMARIA: Asegura que el ID de cada película sea único en la videoteca -->
+    <xs:key name="idPelicula">
+      <xs:selector xpath="película"/>
+      <xs:field xpath="@id"/>
+    </xs:key>
+    <!-- REGLA B: Asegura que el ID de cada actor sea único -->
+    <xs:key name="idActor">
+      <xs:selector xpath="actor"/>
+      <xs:field xpath="@id"/>
+    </xs:key>
+    <!-- REGLA C (NUEVA): Integridad Referencial. El id de <actúa> debe existir en un <actor> -->
+    <xs:keyref name="referenciaActor" refer="idActor">
+      <xs:selector xpath="película/actúa"/> <!-- Dónde se usa el enlace -->
+      <xs:field xpath="@id"/>                <!-- El atributo que enlaza -->
+    </xs:keyref>
+    
+  </xs:element>
+  
+<!-- 2. ELEMENTO PELÍCULA -->
+  <xs:element name="película">
+  
+    <xs:complexType>
+        <xs:sequence>
+         <xs:element ref="importe" maxOccurs="1"/>
+         <xs:element name="título" type="xs:string"/>
+         <xs:element name="títuloorixinal" type="xs:string"/>
+         <xs:element name="ano" type="xs:integer"/>
+         <xs:element name="director" type="xs:string"/>
+         <xs:element name="xénero" type="xs:string"/>
+         <xs:element name="duración" type="xs:integer"/>
+         <xs:element ref="actúa" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:integer" use="required"/>
+    </xs:complexType>
+    
+  </xs:element>
+  
+  <!-- 3. COMPONENTE IMPORTE (Complejo con contenido decimal de dos cifras, definido por simpleType) -->
+  <xs:element name="importe">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="tipoMoneda">
+            <xs:attribute name="moneda" type="xs:string" use="required"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  
+  <!-- 4. COMPONENTE ACTÚA (Elemento vacío que solo posee un atributo) -->
+  <xs:element name="actúa">
+    <xs:complexType>
+      <!-- Al no llevar sequence ni simpleContent, XSD sabe que está vacío por dentro -->
+      <xs:attribute name="id" type="xs:integer" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="actor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="nome" type="xs:string"/>
+        <xs:element name="sexo" type="xs:string"/>
+        <xs:element name="datanacemento" type="xs:string"/>
+        <xs:element name="url" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:integer" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  
+  
+    <!-- Creamos una plantilla de tipo de datos personalizada que limita los decimales a 2 posiciones-->
+<xs:simpleType name="tipoMoneda">
+  <xs:restriction base="xs:decimal">
+    <xs:fractionDigits value="2"/> <!-- Obliga a que como máximo haya 2 decimales -->
+  </xs:restriction>
+</xs:simpleType>
+  
+</xs:schema>

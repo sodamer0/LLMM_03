@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raíz>
+  <registro>
+    <identificador>INF-01</identificador>
+    <título>Sistemas Informáticos</título>
+    <fecha>
+      <año>2026</año>
+    </fecha>
+  </registro>
+  <registro>
+    <identificador>LMSGI-02</identificador>
+    <título>Linguaxes de Marcas</título>
+    <fecha>
+      <año>2026</año>
+    </fecha>
+  </registro>
+</raíz>

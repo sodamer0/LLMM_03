@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+  <xs:element name="equipos">
+    
+    <xs:element name="equipo">
+      <xs:complexType>
+        <xs:sequence>
+        
+          <xs:element  name="equipo"
+                              minOccurs="1"
+                              maxOccurs="50"
+                              type="tipoEquipo" />
+          <xs:element name="temporada"
+                              minOccurs="1"
+                              maxOccurs="50"
+                              type="tipoTemporada"/>
+          <xs:element name="pilota"
+                              minOccurs="1"
+                              maxOccurs="50"
+                              type="tipoPilota"/>
+                              
+        </xs:sequence> 
+      </xs:complexType>
+    </xs:element>
+    
+    <xs:complexType name="tipoEquipo">
+      <xs:sequence>
+        <xs:element name=""nombre"
+                            type="xs:string"/>
+        <xs:element name=""
+        
+      
+      
+      
+      
+      </xs:sequence>
+    
+    
+    
+    
+    </xs:complexType>
+
+    <xs:complexType>
+      
+    
+    
+    
+    
+    
+    </xs:complexType name="">
+
+
+
+
+
+
+     <xs:complexType name="piloto">
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+        <xs:
+        
+        
+          <xs:attribute name="codigoPiloto" type="xs:integer" use="required"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+
+
+
+    
+      <xs:complexType name="tipoTemporada">
+        <xs:sequence>
+          <xs:element name="año" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
+      
+      
+    </xs:element>
+    
+    
+</xs:schema>
+
+

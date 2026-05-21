@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<catalogo>
+  <item>
+    <id>PROD-95</id>
+    <articulo fabricante="Sony">PlayStation 5</articulo>
+    <coste unidad="EUR">499</coste>
+  </item>
+</catalogo>

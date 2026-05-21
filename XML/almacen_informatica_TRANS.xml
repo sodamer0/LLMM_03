@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<productos>
+  <producto>
+    <id>ART-099</id>
+    <modelo marca="Kingston" tipo="SSD NVMe"/>
+    <capacidad unidad="GB">500</capacidad>
+    <almacenamiento modulos_estantes="1" ocupacion_total="1"/>
+  </producto>
+  <producto>
+    <id>SERVER-RAM</id>
+    <modelo marca="Corsair" modelo="RAM DDR4"/>
+    <capacidad unidad="GB">16</capacidad>
+    <almacenamiento modulos_estantes="3" ocupacion_total="6"/>
+  </producto>
+</productos>

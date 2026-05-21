@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<videoclub empresa="Videoclub Galicia 2026"
+                      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                      xsi:noNamespaceSchemaLocation="videoclub.xsd">
+
+  <!-- ========================================== -->
+  <!-- 1. BLOQUE DE PELÍCULAS                     -->
+  <!-- ========================================== -->
+  
+  <!-- Película 1: Cumple el patrón ID, tiene idioma y un género de la lista -->
+  <pelicula id="Esp-123" idioma="Castellano">
+    <titulo>El Laberinto del Fauno</titulo>
+    <generos>Drama</generos>
+  </pelicula>
+
+  <!-- Película 2: Idioma es opcional (no se pone), género Comedia -->
+  <pelicula id="Eng-456">
+    <titulo>Shaun of the Dead</titulo>
+    <generos>Comedia</generos>
+  </pelicula>
+
+  <!-- Película 3: Género Terror -->
+  <pelicula id="Jps-789" idioma="Japonés">
+    <titulo>Ringu (The Ring)</titulo>
+    <generos>Terror</generos>
+  </pelicula>
+
+
+  <!-- ========================================== -->
+  <!-- 2. BLOQUE DE CRÍTICAS                      -->
+  <!-- ========================================== -->
+  
+  <!-- Crítica 1: Tiene su propio ID (Cri-001) y referencia a la peli Esp-123. 
+       Puntuación con 3 decimales exactos. -->
+  <critica id="Cri-001">
+    <contenido>Una obra maestra absoluta del cine fantástico español.</contenido>
+    <puntuacion autor="Carlos Boyero" peli_ref="Esp-123">9.500</puntuacion>
+  </critica>
+
+  <!-- Crítica 2: Referencia a la peli Eng-456. Puntuación con 1 decimal (XSD lo acepta porque el máximo es 3). -->
+  <critica id="Cri-002">
+    <contenido>La mejor comedia de zombis de la historia.</contenido>
+    <puntuacion autor="M. Night Shyamalan" peli_ref="Eng-456">8.700</puntuacion>
+  </critica>
+
+</videoclub>
